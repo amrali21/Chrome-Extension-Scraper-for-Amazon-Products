@@ -1,0 +1,35 @@
+{
+  "name": "My product comparer",
+  "version": "0.1.0",
+  "description": "collecting & comparing amazon products",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.amazon.eg/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.amazon.eg/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/ext-icon.png",
+      "24": "assets/ext-icon.png",
+      "32": "assets/ext-icon.png"
+    },
+    "default_title": "My product Comparer",
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3
+}
