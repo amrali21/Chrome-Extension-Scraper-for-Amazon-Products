@@ -1,42 +1,37 @@
-(() => {
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.greeting === "hello") {
-      alert('answering from content script, HELLO BACK!')
+chrome.runtime.onMessage.addListener((request) => {
+  if (request.action === "scrape") {
+    scrapeItems();
+  }
+})
 
-      productList = scrapeItems();
-
-    }
-  });
-})();
-
-const scrapeItems = () => {
+const scrapeItems = async () => {
   try {
-    const test = document.querySelectorAll(`div[data-component-type="s-search-result"]`);
+    const searchResults = document.querySelectorAll(`div[data-component-type="s-search-result"]`);
     const productList = [];
 
-    test.forEach((el) => {
-      let title = el.querySelector('.s-title-instructions-style span').innerHTML;
+    searchResults.forEach((el) => {
 
+      let title = el.querySelector('.s-title-instructions-style span').innerHTML;
       let price, unit, priceUnit;
 
       try {
         price = el.querySelector('.a-price-whole').innerHTML.split('<span')[0];
         unit = el.querySelector('.a-price-symbol').innerHTML;
-
         priceUnit = `${price} ${unit}`;
       } catch {
-        priceUnit = 'No Offers Available'
+        priceUnit = 'No Offers Available';
       }
 
       productList.push({ title, priceUnit });
+    });
 
-      console.log(`${title}, ${priceUnit}`);
-    })
+    const storedProducts = await chrome.storage.local.get(["productList"])
+    const newProductList = storedProducts.productList ? storedProducts.productList.concat(productList) : productList
 
-    alert(`no of results: ${test.length}`);
-    return productList;
+    chrome.storage.local.set({ productList: newProductList });
+    alert('Products stored successfully')
   }
   catch (e) {
-    alert(`a7a error! ${e.message}`)
+    alert(`error! ${e.message}`)
   }
 }

@@ -3,8 +3,17 @@
 
 <div class="container">
   <div>
-    <div class="title">Your products to compare</div>
+    <h3 class="title">Product Compare Tool</h3>
+    <div class="productCount">
+      <span>Stored Prodcuts: </span>
+      <span id="savedProducts"></span>
+    </div>
+    <input id="startButton" class="buttonStyle" type="button" value="scrape" />
 
-    <input id="startButton" type="button" value="start" />
+    <a id="exportButton" target="_blank" href="" download>
+      <input type="button" class="buttonStyle" value="Export CSV" />
+    </a>
+
+    <input id="clearButton" type="button" class="buttonStyle" value="clear products" />
   </div>
 </div>

@@ -24,9 +24,9 @@
   ],
   "action": {
     "default_icon": {
-      "16": "assets/ext-icon.png",
-      "24": "assets/ext-icon.png",
-      "32": "assets/ext-icon.png"
+      "16": "assets/scraper_icon.png",
+      "24": "assets/scraper_icon.png",
+      "32": "assets/scraper_icon.png"
     },
     "default_title": "My product Comparer",
     "default_popup": "popup.html"
