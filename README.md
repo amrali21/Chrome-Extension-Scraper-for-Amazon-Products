@@ -5,6 +5,6 @@
 - Extension UI will show products scraped so far.
 
 ## Showcase
-![Alt Text](https://github.com/amrali21/Chrome-Extension-Scraper-for-Amazon-Products/Showcase.png)
+![Alt Text](https://github.com/amrali21/Chrome-Extension-Scraper-for-Amazon-Products/blob/master/Showcase.PNG)
 
 
