@@ -1,5 +1,5 @@
 {
-  "name": "My product comparer",
+  "name": "My Product Scraper",
   "version": "0.1.0",
   "description": "collecting & comparing amazon products",
   "permissions": [
@@ -7,7 +7,8 @@
     "tabs"
   ],
   "host_permissions": [
-    "https://*.amazon.eg/*"
+    "https://*.amazon.eg/*",
+    "https://*.amazon.com/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -15,7 +16,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*.amazon.eg/*"
+        "https://*.amazon.eg/*",
+        "https://*.amazon.com/*"
       ],
       "js": [
         "contentScript.js"
